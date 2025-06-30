@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Menu, 
-  X, 
-  Moon, 
-  Sun, 
-  Code, 
-  Smartphone, 
-  Monitor, 
+import ContactForm from './contactForm.tsx'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import {
+  Menu,
+  X,
+  Moon,
+  Sun,
+  Code,
+  Smartphone,
+  Monitor,
   Database,
   Mail,
   Phone,
@@ -32,7 +34,7 @@ function App() {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
@@ -92,7 +94,7 @@ function App() {
       icon: <Database className="w-8 h-8" />,
       title: "Gestion de Bases de Données",
       description: "Conception et gestion de bases de données relationnelles .",
-      technologies: ["MySQL",  "SQL", "InnoDB"]
+      technologies: ["MySQL", "SQL", "InnoDB"]
     }
   ];
 
@@ -134,7 +136,7 @@ function App() {
                 FK
               </span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
@@ -142,13 +144,12 @@ function App() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 capitalize ${
-                      activeSection === item
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 capitalize ${activeSection === item
                         ? 'bg-blue-600 text-white'
                         : isDarkMode
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                          ? 'text-gray-300 hover:text-white hover:bg-gray-700'
+                          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                   >
                     {item === 'home' ? 'Accueil' : item === 'about' ? 'À propos' : item}
                   </button>
@@ -159,20 +160,18 @@ function App() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleTheme}
-                className={`p-2 rounded-md transition-colors duration-200 ${
-                  isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className={`p-2 rounded-md transition-colors duration-200 ${isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
               >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              
+
               {/* Mobile menu button */}
               <div className="md:hidden">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`p-2 rounded-md transition-colors duration-200 ${
-                    isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
+                  className={`p-2 rounded-md transition-colors duration-200 ${isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                 >
                   {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
@@ -189,13 +188,12 @@ function App() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200 capitalize ${
-                    activeSection === item
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200 capitalize ${activeSection === item
                       ? 'bg-blue-600 text-white'
                       : isDarkMode
-                      ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
+                        ? 'text-gray-300 hover:text-white hover:bg-gray-700'
+                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                 >
                   {item === 'home' ? 'Accueil' : item === 'about' ? 'À propos' : item}
                 </button>
@@ -228,11 +226,10 @@ function App() {
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className={`px-8 py-3 rounded-lg font-medium border-2 transition-all duration-200 ${
-                    isDarkMode
+                  className={`px-8 py-3 rounded-lg font-medium border-2 transition-all duration-200 ${isDarkMode
                       ? 'border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white'
                       : 'border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Me contacter
                 </button>
@@ -242,7 +239,7 @@ function App() {
               <div className="relative">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-blue-600 to-purple-600 shadow-2xl">
                   <img
-                    src="/WhatsApp Image 2025-06-23 à 11.23.26_7e006a25.webp"
+                    src={`${import.meta.env.BASE_URL}images/profil.webp`}
                     alt="Franck Kenfoh"
                     className="w-full h-full object-cover"
                   />
@@ -268,29 +265,30 @@ function App() {
               Développeur junior basé au Cameroun, passionné par les technologies modernes et l'innovation.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold mb-6">Mon parcours</h3>
               <p className={`text-lg mb-6 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Passionné par le développement depuis mes études, j'ai acquis une solide expérience dans le développement 
-                d'applications web, mobile et desktop. Mon approche combine créativité et rigueur technique pour créer 
+                Passionné par le développement depuis mes études, j'ai acquis une solide expérience dans le développement
+                d'applications web, mobile et desktop. Mon approche combine créativité et rigueur technique pour créer
                 des solutions innovantes et performantes.
               </p>
               <p className={`text-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Basé au Cameroun, je travaille avec des clients locaux et internationaux pour donner vie à leurs projets 
+                Basé au Cameroun, je travaille avec des clients locaux et internationaux pour donner vie à leurs projets
                 digitaux. Mon objectif est de créer des applications qui font la différence.
               </p>
-              
+
               <div className="flex items-center space-x-4 mb-6">
                 <MapPin className="w-5 h-5 text-blue-600" />
                 <span>Cameroun</span><br />
-        
+
               </div>
-                      <button  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-            ><a href="/cv.pdf" target="_blank" rel="noopener noreferrer">Mon CV</a></button>
-            </div>
-            
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              ><a href={`${import.meta.env.BASE_URL}/cv.pdf`} target="_blank" rel="noopener noreferrer">Mon CV</a></button>
+            </div>import ContactForm from './contactForms';
+
+
             <div>
               <h3 className="text-2xl font-bold mb-6">Mes compétences</h3>
               <div className="space-y-4">
@@ -325,14 +323,13 @@ function App() {
               Je propose une gamme complète de services de développement pour répondre à tous vos besoins digitaux.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`p-6 rounded-xl transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl ${
-                  isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50 shadow-lg'
-                }`}
+                className={`p-6 rounded-xl transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50 shadow-lg'
+                  }`}
               >
                 <div className="text-blue-600 mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -343,9 +340,8 @@ function App() {
                   {service.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className={`px-3 py-1 text-xs rounded-full ${
-                        isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
-                      }`}
+                      className={`px-3 py-1 text-xs rounded-full ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
+                        }`}
                     >
                       {tech}
                     </span>
@@ -366,14 +362,13 @@ function App() {
               Découvrez quelques-uns de mes projets récents qui démontrent mes compétences et ma créativité.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl ${
-                  isDarkMode ? 'bg-gray-900' : 'bg-white shadow-lg'
-                }`}
+                className={`rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl ${isDarkMode ? 'bg-gray-900' : 'bg-white shadow-lg'
+                  }`}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -407,9 +402,8 @@ function App() {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className={`px-3 py-1 text-xs rounded-full ${
-                          isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
-                        }`}
+                        className={`px-3 py-1 text-xs rounded-full ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
+                          }`}
                       >
                         {tech}
                       </span>
@@ -431,7 +425,7 @@ function App() {
               Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-bold mb-6">Restons en contact</h3>
@@ -447,7 +441,7 @@ function App() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
@@ -460,7 +454,7 @@ function App() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
@@ -473,74 +467,58 @@ function App() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-8">
                 <h4 className="text-lg font-bold mb-4">Suivez-moi</h4>
                 <div className="flex space-x-4">
                   <a
-                    href="https://www.linkedin.com/in/dunil-tazoh-455278371?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                    href="https://github.com/TAZOHfranck
+                  "
                     className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                   >
                     <Github className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://github.com/TAZOHfranck"
+                    href="  https://www.linkedin.com/in/dunil-tazoh-455278371?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                     className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
+                 
                 </div>
+                <div className="flex gap-4 mt-6 justify-center">
+  <a
+    href="https://wa.me/237674354438"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-green-500 hover:text-green-600 text-base"
+  >
+    <i className="fab fa-whatsapp text-sm mr-1"></i> WhatsApp
+  </a>
+  <a
+    href="https://instagram.com/k.td_frnck"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-pink-500 hover:text-pink-600 text-base"
+  >
+    <i className="fab fa-instagram text-sm mr-1"></i> Instagram
+  </a>
+  <a
+    href="https://www.facebook.com/share/1DcaUaMwpf/?mibextid=wwXIfr"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-600 hover:text-blue-700 text-base"
+  >
+    <i className="fab fa-facebook text-sm mr-1"></i> Facebook
+  </a>
+</div>
+
               </div>
             </div>
-            
+
             <div className={`p-8 rounded-xl ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Nom</label>
-                  <input
-                    type="text"
-                    className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 ${
-                      isDarkMode
-                        ? 'bg-gray-700 border-gray-600 text-white focus:border-blue-500'
-                        : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
-                    placeholder="Votre nom"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input
-                    type="email"
-                    className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 ${
-                      isDarkMode
-                        ? 'bg-gray-700 border-gray-600 text-white focus:border-blue-500'
-                        : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
-                    placeholder="votre@email.com"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea
-                    rows={5}
-                    className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 ${
-                      isDarkMode
-                        ? 'bg-gray-700 border-gray-600 text-white focus:border-blue-500'
-                        : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
-                    placeholder="Votre message..."
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                >
-                  Envoyer le message
-                </button>
-              </form>
+            <h2 className="text-3xl font-bold text-center mt-10">Me Contacter</h2>
+      <ContactForm />
             </div>
           </div>
         </div>
